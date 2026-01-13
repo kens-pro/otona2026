@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>トリイミュージック - 大人からはじめる音楽教室</title>
+  <meta name="description" content="大人初心者・再開の方へ。電話＝申込みではありません。まずは不安なことだけご相談ください。無料体験・おためし3回レッスンあり。電話番号：0740222063" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#1A4D2E;
+      --secondary:#D4AF37;
+      --accent:#E94F37;
+      --cream:#FDFCF0;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --card:#ffffff;
+      --line:rgba(2,6,23,.08);
+      --shadow: 0 20px 40px rgba(2,6,23,.10);
+      --shadow-soft: 0 10px 25px rgba(2,6,23,.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --container: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:"Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a{ color: inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    /* Layout */
+    .wrap{
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 16px 120px;
+    }
+
+    /* Sticky header */
+    .header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header__inner{
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand small{
+      font-weight:800;
+      font-size:10px;
+      letter-spacing:.22em;
+      color: var(--primary);
+    }
+    .brand strong{
+      font-family:"Noto Serif JP", serif;
+      font-weight:700;
+      font-size:18px;
+    }
+
+    .cta-header{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight:800;
+      box-shadow: 0 12px 30px rgba(26,77,46,.22);
+      transform: translateZ(0);
+      transition: transform .12s ease, filter .12s ease;
+      white-space:nowrap;
+    }
+    .cta-header:active{ transform: scale(.98); }
+    .cta-header .material-icons{ font-size:18px; }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      overflow:hidden;
+      border-radius: calc(var(--radius-xl) + 6px);
+      box-shadow: var(--shadow);
+      margin: 18px 0 18px;
+      background: #111827;
+      min-height: 520px;
+    }
+    .hero__bg{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.68), rgba(0,0,0,.20), rgba(0,0,0,.08)),
+        url("https://images.unsplash.com/photo-1552422535-c45813c61732?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat;
+      transform: scale(1.03);
+    }
+    .hero__content{
+      position: relative;
+      z-index: 2;
+      padding: 22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      min-height: 520px;
+      color:#fff;
+    }
+    .badge{
+      position:absolute;
+      top: 18px;
+      right: 18px;
+      z-index:3;
+      background: var(--accent);
+      color:#fff;
+      font-weight:900;
+      font-size:12px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: 0 14px 30px rgba(233,79,55,.28);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .badge .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: #fff;
+      box-shadow: 0 0 0 6px rgba(255,255,255,.16);
+    }
+
+    .hero h1{
+      margin: 0 0 14px;
+      font-family:"Noto Serif JP", serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      letter-spacing: .01em;
+      line-height: 1.25;
+      text-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    .hero h1 .accent{
+      color: var(--secondary);
+      font-style: italic;
+    }
+
+    .hero__lead{
+      margin: 0 0 16px;
+      max-width: 720px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px;
+      backdrop-filter: blur(8px);
+    }
+    .hero__lead .kicker{
+      font-weight:900;
+      font-size: 11px;
+      letter-spacing:.22em;
+      opacity:.9;
+      margin-bottom: 6px;
+    }
+    .hero__lead p{
+      margin: 4px 0;
+      font-size: 14px;
+      opacity:.95;
+      line-height: 1.6;
+    }
+
+    /* Offer strip */
+    .offer{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .offer__card{
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.26);
+      padding: 14px;
+      backdrop-filter: blur(10px);
+    }
+    .offer__title{
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .2em;
+      opacity: .88;
+      margin: 0 0 6px;
+    }
+    .offer__main{
+      margin:0;
+      font-weight: 900;
+      font-size: 16px;
+      line-height:1.35;
+    }
+    .offer__main strong{
+      font-family:"Noto Serif JP", serif;
+      font-size: 28px;
+      color: var(--secondary);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 6px;
+    }
+    .offer__note{
+      margin: 10px 0 0;
+      font-size: 12px;
+      opacity: .9;
+      line-height: 1.6;
+    }
+
+    .hero__ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 14px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 900;
+      border: 1px solid transparent;
+      transition: transform .12s ease, filter .12s ease, background .12s ease;
+      white-space:nowrap;
+    }
+    .btn:active{ transform: scale(.98); }
+    .btn--tel{
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 16px 34px rgba(0,0,0,.18);
+    }
+    .btn--tel .material-icons{ color: var(--primary); }
+    .btn--ghost{
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.28);
+      color:#fff;
+    }
+
+    /* Small trust line under CTA */
+    .trustline{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      font-size: 12px;
+      opacity: .92;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(8px);
+    }
+    .pill .material-icons{ font-size:16px; color: var(--secondary); }
+
+    /* Icon row */
+    .iconRow{
+      margin: 18px 0 10px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .iconCard{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 14px 10px;
+      box-shadow: var(--shadow-soft);
+      text-align:center;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .iconCard:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
+    .iconCard .material-icons{
+      font-size: 28px;
+      color: var(--primary);
+    }
+    .iconCard b{
+      display:block;
+      margin-top: 8px;
+      font-size: 12px;
+      letter-spacing:.02em;
+    }
+
+    /* Main sections */
+    section{ margin-top: 18px; }
+
+    .sectionCard{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .sectionPad{ padding: 22px; }
+
+    .h2{
+      margin: 0 0 14px;
+      font-family:"Noto Serif JP", serif;
+      font-size: 22px;
+      color: var(--primary);
+      letter-spacing:.02em;
+      text-align:center;
+    }
+    .subhead{
+      margin: 0 auto 18px;
+      max-width: 800px;
+      text-align:center;
+      color: var(--muted);
+      line-height:1.8;
+      font-size: 14px;
+    }
+
+    /* Recommended offer block */
+    .recommend{
+      background: linear-gradient(135deg, rgba(26,77,46,1), rgba(26,77,46,.92));
+      color:#fff;
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .recommend:before{
+      content:"";
+      position:absolute; inset:-40px -60px auto auto;
+      width: 180px; height: 180px;
+      background: rgba(212,175,55,.12);
+      border-radius: 999px;
+      filter: blur(18px);
+    }
+    .recommend:after{
+      content:"";
+      position:absolute; inset:auto auto -50px -60px;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+      filter: blur(16px);
+    }
+    .recommend__inner{ position:relative; z-index:2; }
+    .recommend__kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+    .tag{
+      background: var(--secondary);
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .recommend__title{
+      margin: 0;
+      font-family:"Noto Serif JP", serif;
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .recommend__desc{
+      margin: 10px 0 14px;
+      color: rgba(255,255,255,.92);
+      line-height:1.8;
+      font-size: 14px;
+    }
+    .priceRow{
+      display:flex;
+      align-items:baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .priceRow .num{
+      font-family:"Noto Serif JP", serif;
+      font-size: 46px;
+      font-weight: 700;
+      letter-spacing:-.02em;
+    }
+    .priceRow .yen{ font-weight: 900; }
+    .checks{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin: 10px 0 14px;
+    }
+    .check{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 14px;
+      padding: 10px 10px;
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .check .material-icons{ color: var(--secondary); font-size:18px; }
+
+    .btnWide{
+      width: 100%;
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: 900;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap: 10px;
+    }
+    .btnWide--white{
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 18px 30px rgba(0,0,0,.18);
+    }
+
+    /* Reasons */
+    .reasons{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .reason{
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+    .reason .n{
+      width: 46px; height: 46px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(212,175,55,.14);
+      color: var(--secondary);
+      font-family:"Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .reason h3{
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing:.01em;
+    }
+    .reason p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.85;
+      font-size: 13px;
+    }
+
+    /* Phone help block */
+    .phoneHelp{
+      background: linear-gradient(180deg, #fff, rgba(255,255,255,.9));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .phoneHelp__top{
+      padding: 18px 18px 0;
+    }
+    .phoneHelp__title{
+      margin: 0 0 8px;
+      font-family:"Noto Serif JP", serif;
+      font-size: 20px;
+      color: var(--primary);
+    }
+    .phoneHelp__desc{
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.85;
+    }
+    .qa{
+      padding: 0 18px 18px;
+      display:grid;
+      gap: 10px;
+    }
+    .qa .item{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      background: rgba(2,6,23,.02);
+      border: 1px solid rgba(2,6,23,.06);
+      border-radius: 16px;
+      padding: 12px 12px;
+    }
+    .qa .q{
+      flex:0 0 auto;
+      width: 30px; height: 30px;
+      border-radius: 10px;
+      background: rgba(233,79,55,.12);
+      color: var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .qa p{
+      margin:0;
+      color: var(--ink);
+      font-size: 13px;
+      line-height:1.85;
+    }
+    .assurance{
+      border-top: 1px solid var(--line);
+      padding: 14px 18px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .assurance .left{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      min-width: 240px;
+    }
+    .assurance .k{
+      font-weight: 900;
+      color: var(--primary);
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .assurance .k .material-icons{ font-size:18px; color: var(--secondary); }
+    .assurance .s{
+      color: var(--muted);
+      font-size: 12px;
+      line-height:1.6;
+    }
+
+    /* Contact */
+    .contact{
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .contact__head{
+      padding: 20px 18px 14px;
+      text-align:center;
+    }
+    .contact__head .kicker{
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing:.28em;
+      color: var(--primary);
+    }
+    .contact__head h2{
+      margin: 10px 0 0;
+      font-size: 22px;
+      letter-spacing:.01em;
+    }
+    .phoneCard{
+      margin: 0 18px 14px;
+      border-radius: calc(var(--radius-xl) - 6px);
+      border: 1px solid rgba(2,6,23,.08);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+      text-align:center;
+    }
+    .phoneCard .pre{
+      font-weight: 900;
+      font-size: 13px;
+      color: var(--primary);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .phoneCard .pre .material-icons{ color: var(--secondary); }
+    .phoneCard .number{
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: .02em;
+      color: var(--primary);
+      margin: 4px 0 8px;
+      line-height:1.1;
+    }
+    .phoneCard .meta{
+      color: var(--muted);
+      font-size: 12px;
+      background: rgba(2,6,23,.03);
+      display:inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(2,6,23,.06);
+    }
+    .phoneCard .tap{
+      margin-top: 12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--primary);
+      color:#fff;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(26,77,46,.18);
+    }
+    .phoneCard .tap:active{ transform: scale(.98); }
+
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 18px 18px;
+    }
+    .miniCard{
+      border-radius: 22px;
+      border: 1px solid rgba(2,6,23,.08);
+      background: #fff;
+      padding: 16px 14px;
+      box-shadow: var(--shadow-soft);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      min-height: 140px;
+    }
+    .miniCard .material-icons{
+      font-size: 30px;
+      color: var(--primary);
+    }
+    .miniCard b{
+      font-size: 12px;
+      letter-spacing:.02em;
+      text-align:center;
+    }
+    .qr{
+      width: 86px;
+      height: 86px;
+      background: rgba(2,6,23,.03);
+      border-radius: 16px;
+      padding: 8px;
+      border: 1px solid rgba(2,6,23,.06);
+    }
+    .qr img{ width:100%; height:100%; opacity:.75; }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      color: rgba(100,116,139,.9);
+      padding: 28px 0 16px;
+    }
+    footer .fbrand{
+      font-family:"Noto Serif JP", serif;
+      font-weight:700;
+      color: var(--primary);
+      letter-spacing:.14em;
+      margin-bottom: 6px;
+    }
+    footer small{ font-size: 11px; }
+
+    /* Bottom sticky nav (mobile-first) */
+    .bottomNav{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--line);
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    }
+    .bottomNav__inner{
+      max-width: var(--container);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .navItem{
+      flex: 1 1 0;
+      min-width: 64px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 4px;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 10px;
+    }
+    .navItem .material-icons{ font-size: 24px; }
+
+    .navCenter{
+      position: relative;
+      flex: 0 0 auto;
+      transform: translateY(-16px);
+    }
+    .navCenter a{
+      width: 64px; height: 64px;
+      border-radius: 999px;
+      background: var(--accent);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border: 4px solid #fff;
+      box-shadow: 0 18px 40px rgba(233,79,55,.30);
+      transition: transform .12s ease;
+    }
+    .navCenter a:active{ transform: scale(.92); }
+    .navCenter .ping{
+      position:absolute;
+      top: -4px; right: -2px;
+      width: 22px; height: 22px;
+      border-radius: 999px;
+      background: #facc15;
+      color: var(--primary);
+      border: 2px solid #fff;
+      font-weight: 900;
+      font-size: 11px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      animation: pulse 1.4s infinite;
+    }
+    @keyframes pulse{
+      0%{ transform: scale(1); box-shadow: 0 0 0 0 rgba(250,204,21,.45); }
+      70%{ transform: scale(1.02); box-shadow: 0 0 0 10px rgba(250,204,21,0); }
+      100%{ transform: scale(1); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
+    }
+
+    /* Desktop adjustments */
+    @media (min-width: 880px){
+      .wrap{ padding-bottom: 40px; }
+      .bottomNav{ display:none; }
+      .hero{ min-height: 560px; }
+      .hero__content{ min-height: 560px; padding: 34px; }
+      .offer{ grid-template-columns: 1fr 1fr; gap: 16px; }
+      .iconRow{ gap: 16px; }
+    }
+
+    /* Small screens */
+    @media (max-width: 520px){
+      .offer{ grid-template-columns: 1fr; }
+      .reasons{ grid-template-columns: 1fr; }
+      .contactGrid{ grid-template-columns: 1fr; }
+      .iconRow{ gap: 10px; }
+      .iconCard{ padding: 12px 8px; }
+    }
+
+    /* Accessibility */
+    .sr-only{
+      position:absolute;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand" aria-label="Torii Music School">
+        <small>TORII MUSIC SCHOOL</small>
+        <strong>トリイミュージック</strong>
+      </div>
+
+      <!-- Primary conversion CTA -->
+      <a class="cta-header" href="tel:0740222063" data-tel-cta="header">
+        <span class="material-icons" aria-hidden="true">phone_in_talk</span>
+        まずは電話で相談
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-label="Hero">
+      <div class="hero__bg" role="img" aria-label="ピアノを弾くイメージ"></div>
+
+      <div class="badge" aria-label="Campaign badge">
+        <span class="dot" aria-hidden="true"></span>
+        2026年 春の生徒募集中！
+      </div>
+
+      <div class="hero__content">
+        <h1>
+          はじめてでも、大丈夫。<br/>
+          迷っている今が、<br/>
+          <span class="accent">いちばん始めやすいタイミング</span>です。
+        </h1>
+
+        <div class="hero__lead">
+          <div class="kicker">PHONE FIRST</div>
+          <p>・楽譜が読めなくても大丈夫</p>
+          <p>・楽器に触るのが久しぶりでも大丈夫</p>
+          <p>・年齢を気にせず始められます</p>
+          <p style="margin-top:10px;font-weight:800;">まずはお電話で「自分に合うかどうか」だけ聞いてみてください。</p>
+        </div>
+
+        <div class="offer" aria-label="Offers">
+          <div class="offer__card">
+            <p class="offer__title">EXPERIENCE BONUS</p>
+            <p class="offer__main">
+              体験教室当日にご入会で<br/>
+              <strong>入会金 5,500円 → 50%OFF</strong>
+            </p>
+            <p class="offer__note">※「まだ迷っている段階」のお電話でも大丈夫です。まずは質問だけでもOK。</p>
+          </div>
+
+          <div class="offer__card">
+            <p class="offer__title">TRIAL PLAN</p>
+            <p class="offer__main">
+              おためし3回レッスン<br/>
+              <strong>3,300円(税込)</strong>
+            </p>
+            <p class="offer__note">教材費無料／手ぶらOK。まずは“続けられそうか”を3回で確かめられます。</p>
+          </div>
+        </div>
+
+        <div class="hero__ctaRow" aria-label="Hero CTAs">
+          <a class="btn btn--tel" href="tel:0740222063" data-tel-cta="hero_primary">
+            <span class="material-icons" aria-hidden="true">call</span>
+            今すぐ電話で相談する
+          </a>
+          <a class="btn btn--ghost" href="#contact">
+            <span class="material-icons" aria-hidden="true">arrow_downward</span>
+            相談の流れを見る
+          </a>
+        </div>
+
+        <div class="trustline" aria-label="Trust line">
+          <span class="pill"><span class="material-icons" aria-hidden="true">verified</span>電話＝申込みではありません</span>
+          <span class="pill"><span class="material-icons" aria-hidden="true">favorite</span>無理な勧誘は一切なし</span>
+          <span class="pill"><span class="material-icons" aria-hidden="true">schedule</span>10:30〜19:30（月曜定休）</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick course icons -->
+    <section class="iconRow" aria-label="Courses">
+      <div class="iconCard">
+        <span class="material-icons" aria-hidden="true">piano</span>
+        <b>ピアノ</b>
+      </div>
+      <div class="iconCard">
+        <span class="material-icons" aria-hidden="true">straighten</span>
+        <b>バイオリン</b>
+      </div>
+      <div class="iconCard">
+        <span class="material-icons" aria-hidden="true">mic</span>
+        <b>ヴォーカル</b>
+      </div>
+      <div class="iconCard">
+        <span class="material-icons" aria-hidden="true">more_horiz</span>
+        <b>その他</b>
+      </div>
+    </section>
+
+    <!-- Recommended block -->
+    <section class="recommend" aria-label="Recommended offer">
+      <div class="recommend__inner">
+        <div class="recommend__kicker">
+          <span class="tag">RECOMMEND</span>
+          <h2 class="recommend__title">おためし3回レッスン</h2>
+        </div>
+
+        <p class="recommend__desc">
+          「いきなり入会は不安…」という方へ。まずは3回だけ。<br/>
+          続けられそうか、教室の雰囲気が合うかを確認してから決められます。
+        </p>
+
+        <div class="priceRow" aria-label="Price">
+          <span class="num">3,300</span>
+          <span class="yen">円(税込)</span>
+        </div>
+
+        <div class="checks" aria-label="Benefits">
+          <div class="check"><span class="material-icons" aria-hidden="true">check_circle</span>教材費無料</div>
+          <div class="check"><span class="material-icons" aria-hidden="true">check_circle</span>手ぶらでOK</div>
+        </div>
+
+        <a class="btnWide btnWide--white" href="tel:0740222063" data-tel-cta="trial_block">
+          まずは電話で相談する
+          <span class="material-icons" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Reasons -->
+    <section class="sectionCard" aria-label="Reasons">
+      <div class="sectionPad">
+        <h2 class="h2">トリイが選ばれる3つの理由</h2>
+        <p class="subhead">
+          大人の方が安心して始められるように。<br/>
+          「続けられる環境」と「最初の一歩の取りやすさ」を大切にしています。
+        </p>
+
+        <div class="reasons">
+          <div class="reason">
+            <div class="n">1</div>
+            <h3>整ったレッスン環境</h3>
+            <p>アコースティックピアノや最新型エレクトーンなど、メンテナンスの行き届いた上質な環境で学べます。</p>
+          </div>
+          <div class="reason">
+            <div class="n">2</div>
+            <h3>多彩なコースと丁寧なサポート</h3>
+            <p>ピアノ・ヴォーカル・弦楽器など幅広く対応。初心者の方には「最初のつまずき」を作らない導入を重視します。</p>
+          </div>
+          <div class="reason">
+            <div class="n">3</div>
+            <h3>成長を楽しめるイベント</h3>
+            <p>発表会やサロンコンサートなど、日頃の成果を披露する場をご用意。仲間との交流も楽しみのひとつです。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phone help / What to ask -->
+    <section class="phoneHelp" aria-label="Phone help">
+      <div class="phoneHelp__top">
+        <h3 class="phoneHelp__title">お電話では、こんなご質問が多いです</h3>
+        <p class="phoneHelp__desc">
+          📞 <b>電話＝申込みではありません</b>。ほとんどの方が、まずは「相談」から始めています。<br/>
+          「何を聞けばいい？」が分からなくても大丈夫。下の例から1つ聞くだけでもOKです。
+        </p>
+      </div>
+
+      <div class="qa" role="list">
+        <div class="item" role="listitem">
+          <div class="q">Q</div>
+          <p>本当にまったくの初心者でも大丈夫ですか？</p>
+        </div>
+        <div class="item" role="listitem">
+          <div class="q">Q</div>
+          <p>楽器を持っていなくても始められますか？</p>
+        </div>
+        <div class="item" role="listitem">
+          <div class="q">Q</div>
+          <p>年齢が気になるのですが、同じくらいの方はいますか？</p>
+        </div>
+        <div class="item" role="listitem">
+          <div class="q">Q</div>
+          <p>続けられるか不安です。まずは体験だけでも大丈夫ですか？</p>
+        </div>
+        <div class="item" role="listitem">
+          <div class="q">Q</div>
+          <p>仕事や家事と両立できる時間帯はありますか？</p>
+        </div>
+      </div>
+
+      <div class="assurance">
+        <div class="left">
+          <div class="k">
+            <span class="material-icons" aria-hidden="true">verified</span>
+            無理に体験や入会をすすめることはありません
+          </div>
+          <div class="s">「自分に合いそうかどうか」だけ確認して、ゆっくり決めてください。</div>
+        </div>
+        <a class="btn btn--tel" href="tel:0740222063" data-tel-cta="phonehelp">
+          <span class="material-icons" aria-hidden="true">call</span>
+          相談だけ電話する
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact" aria-label="Contact">
+      <div class="contact__head">
+        <div class="kicker">CONTACT US</div>
+        <h2>お問い合わせ・ご相談</h2>
+      </div>
+
+      <div class="phoneCard" aria-label="Phone">
+        <div class="pre">
+          <span class="material-icons" aria-hidden="true">support_agent</span>
+          申込みではありません。まずはご相談ください
+        </div>
+
+        <div class="number" id="telNumber">0120-808-529</div>
+
+        <div class="meta">受付時間 10:30〜19:30（月曜定休）</div>
+
+        <a class="tap" href="tel:0740222063" data-tel-cta="contact_primary">
+          <span class="material-icons" aria-hidden="true">phone_in_talk</span>
+          タップして電話する
+        </a>
+      </div>
+
+      <div class="contactGrid">
+        <a class="miniCard" href="https://toriimusic.com" target="_blank" rel="noopener noreferrer">
+          <div class="qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://toriimusic.com" alt="QR Code">
+          </div>
+          <b>WEBから申し込む（別導線）</b>
+        </a>
+
+        <a class="miniCard" href="https://www.toriimusic.co.jp/" target="_blank" rel="noopener noreferrer">
+          <span class="material-icons" aria-hidden="true">public</span>
+          <b>公式サイト・SNSを見る</b>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="fbrand">トリイミュージック</div>
+      <small>© Torii Music School All Rights Reserved.</small>
+    </footer>
+  </main>
+
+  <!-- Bottom Nav (Mobile) -->
+  <nav class="bottomNav" aria-label="Bottom navigation">
+    <div class="bottomNav__inner">
+      <a class="navItem" href="#top">
+        <span class="material-icons" aria-hidden="true">home</span>
+        ホーム
+      </a>
+
+      <a class="navItem" href="#contact">
+        <span class="material-icons" aria-hidden="true">help</span>
+        相談例
+      </a>
+
+      <div class="navCenter">
+        <a href="tel:0740222063" aria-label="電話で相談する" data-tel-cta="bottom_center">
+          <span class="material-icons" aria-hidden="true">call</span>
+        </a>
+        <div class="ping" aria-hidden="true">!</div>
+      </div>
+
+      <a class="navItem" href="#contact">
+        <span class="material-icons" aria-hidden="true">place</span>
+        アクセス
+      </a>
+
+      <a class="navItem" href="#contact">
+        <span class="material-icons" aria-hidden="true">mail</span>
+        問合せ
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    // Smooth scroll for in-page anchors
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      const href = a.getAttribute('href');
+      if(!href || href === '#') return;
+      const target = document.querySelector(href);
+      if(!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      history.replaceState(null, '', href);
+    });
+
+    // Optional: simple click tracking (no external deps)
+    // - Stores counts in localStorage so you can confirm taps in testing.
+    // - If you later add GA4/GTM, you can replace this with dataLayer pushes.
+    (function(){
+      const KEY = 'torii_tel_click_counts';
+      function read(){
+        try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(_){ return {}; }
+      }
+      function write(obj){
+        try{ localStorage.setItem(KEY, JSON.stringify(obj)); }catch(_){}
+      }
+      function inc(source){
+        const obj = read();
+        obj[source] = (obj[source] || 0) + 1;
+        write(obj);
+      }
+      document.addEventListener('click', function(e){
+        const tel = e.target.closest('a[href^="tel:"]');
+        if(!tel) return;
+        const src = tel.getAttribute('data-tel-cta') || 'unknown';
+        inc(src);
+      });
+      // Debug helper: open console and run window.__telClicks()
+      window.__telClicks = function(){ return read(); };
+    })();
+  </script>
+</body>
+</html>
