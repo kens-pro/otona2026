@@ -13,7 +13,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>トリイミュージック - 大人からはじめる音楽教室</title>
-  <meta name="description" content="大人初心者・再開の方へ。電話＝申込みではありません。まずは不安なことだけご相談ください。無料体験・おためし3回レッスンあり。電話番号：0740222063" />
+  <meta name="description" content="大人初心者・再開の方へ。電話＝即日申込み、LINE＝ライトな相談。まずは不安なことだけご相談ください。30分無料体験・おためし3回レッスンあり。電話番号：0740222063" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,7 @@
       --primary:#1A4D2E;
       --secondary:#D4AF37;
       --accent:#E94F37;
+      --line-color:#06C755;
       --cream:#FDFCF0;
       --ink:#0f172a;
       --muted:#64748b;
@@ -94,20 +95,27 @@
       font-size:18px;
     }
 
+    /* Header CTAs */
+    .header__ctas{
+      display: flex;
+      gap: 8px;
+    }
     .cta-header{
       display:inline-flex;
       align-items:center;
-      gap:10px;
+      gap:6px;
       padding: 10px 14px;
       border-radius: 999px;
-      background: var(--primary);
-      color: #fff;
       font-weight:800;
-      box-shadow: 0 12px 30px rgba(26,77,46,.22);
+      font-size: 13px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.1);
       transform: translateZ(0);
       transition: transform .12s ease, filter .12s ease;
       white-space:nowrap;
+      color: #fff;
     }
+    .cta-header--tel{ background: var(--primary); }
+    .cta-header--line{ background: var(--line-color); }
     .cta-header:active{ transform: scale(.98); }
     .cta-header .material-icons{ font-size:18px; }
 
@@ -239,36 +247,49 @@
       line-height: 1.6;
     }
 
+    /* Hero CTAs */
     .hero__ctaRow{
-      display:flex;
-      flex-wrap:wrap;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
       margin-top: 14px;
       align-items:center;
     }
     .btn{
       display:inline-flex;
+      flex-direction: column;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      border-radius: 999px;
-      padding: 12px 16px;
+      gap:4px;
+      border-radius: 18px;
+      padding: 12px 10px;
       font-weight: 900;
       border: 1px solid transparent;
       transition: transform .12s ease, filter .12s ease, background .12s ease;
-      white-space:nowrap;
+      text-align: center;
     }
+    .btn span.btnText{ font-size: 14px; }
+    .btn span.btnSub{ font-size: 10px; opacity: 0.8; font-weight: 500; }
+
     .btn:active{ transform: scale(.98); }
     .btn--tel{
       background: #fff;
       color: var(--primary);
       box-shadow: 0 16px 34px rgba(0,0,0,.18);
     }
-    .btn--tel .material-icons{ color: var(--primary); }
+    .btn--line{
+      background: var(--line-color);
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(6,199,85,.25);
+    }
     .btn--ghost{
       background: rgba(255,255,255,.12);
       border-color: rgba(255,255,255,.28);
       color:#fff;
+      grid-column: span 2;
+      flex-direction: row;
+      border-radius: 999px;
+      gap: 10px;
     }
 
     /* Small trust line under CTA */
@@ -445,11 +466,18 @@
       justify-content:center;
       align-items:center;
       gap: 10px;
+      margin-bottom: 12px;
     }
+    .btnWide:last-child{ margin-bottom: 0; }
     .btnWide--white{
       background: #fff;
       color: var(--primary);
       box-shadow: 0 18px 30px rgba(0,0,0,.18);
+    }
+    .btnWide--line{
+      background: var(--line-color);
+      color: #fff;
+      box-shadow: 0 18px 30px rgba(6,199,85,.2);
     }
 
     /* Reasons */
@@ -551,17 +579,12 @@
     .assurance{
       border-top: 1px solid var(--line);
       padding: 14px 18px 18px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-      justify-content:space-between;
     }
     .assurance .left{
       display:flex;
       flex-direction:column;
       gap: 6px;
-      min-width: 240px;
+      margin-bottom: 16px;
     }
     .assurance .k{
       font-weight: 900;
@@ -577,8 +600,13 @@
       font-size: 12px;
       line-height:1.6;
     }
+    .assurance__btns{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
 
-    /* Contact */
+    /* Contact Section Update */
     .contact{
       background: #fff;
       border: 1px solid var(--line);
@@ -601,57 +629,71 @@
       font-size: 22px;
       letter-spacing:.01em;
     }
-    .phoneCard{
-      margin: 0 18px 14px;
-      border-radius: calc(var(--radius-xl) - 6px);
+
+    .contactDual{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 0 18px 18px;
+    }
+    .c-card{
+      border-radius: var(--radius-lg);
       border: 1px solid rgba(2,6,23,.08);
       background: #fff;
-      box-shadow: var(--shadow-soft);
-      padding: 16px;
+      padding: 24px 16px;
       text-align:center;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .phoneCard .pre{
+    .c-card--line{ border-top: 5px solid var(--line-color); }
+    .c-card--tel{ border-top: 5px solid var(--primary); }
+    
+    .c-card .type-label{
+      font-size: 10px;
       font-weight: 900;
-      font-size: 13px;
-      color: var(--primary);
-      display:flex;
-      justify-content:center;
-      align-items:center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .c-card--line .type-label{ background: rgba(6,199,85,.1); color: var(--line-color); }
+    .c-card--tel .type-label{ background: rgba(26,77,46,.1); color: var(--primary); }
+
+    .c-card h3{ margin: 0 0 8px; font-size: 18px; font-weight: 900; }
+    .c-card .desc{ font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .c-card .main-val{ font-size: 22px; font-weight: 900; margin-bottom: 16px; letter-spacing: 0.02em; }
+    .c-card--line .main-val{ color: var(--line-color); font-size: 16px; }
+    .c-card--tel .main-val{ color: var(--primary); }
+
+    .c-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 8px;
-      margin-bottom: 8px;
-    }
-    .phoneCard .pre .material-icons{ color: var(--secondary); }
-    .phoneCard .number{
-      font-size: clamp(28px, 4vw, 44px);
+      width: 100%;
+      padding: 14px;
+      border-radius: 999px;
+      color: #fff;
       font-weight: 900;
-      letter-spacing: .02em;
-      color: var(--primary);
-      margin: 4px 0 8px;
-      line-height:1.1;
+      box-shadow: 0 8px 20px rgba(0,0,0,.12);
+      transition: transform 0.1s;
     }
-    .phoneCard .meta{
-      color: var(--muted);
-      font-size: 12px;
-      background: rgba(2,6,23,.03);
-      display:inline-block;
+    .c-btn:active{ transform: scale(0.98); }
+    .c-btn--line{ background: var(--line-color); }
+    .c-btn--tel{ background: var(--primary); }
+
+    .stamp-notice{
+      margin-top: 14px;
       padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(2,6,23,.06);
+      background: #F0FDF4;
+      border: 1px dashed var(--line-color);
+      border-radius: 12px;
+      font-size: 11px;
+      color: #166534;
+      font-weight: 700;
+      line-height: 1.5;
     }
-    .phoneCard .tap{
-      margin-top: 12px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: var(--primary);
-      color:#fff;
-      font-weight: 900;
-      box-shadow: 0 14px 30px rgba(26,77,46,.18);
-    }
-    .phoneCard .tap:active{ transform: scale(.98); }
 
     .contactGrid{
       display:grid;
@@ -727,16 +769,16 @@
     }
     .navItem{
       flex: 1 1 0;
-      min-width: 64px;
+      min-width: 50px;
       display:flex;
       flex-direction:column;
       align-items:center;
       gap: 4px;
       color: var(--muted);
       font-weight: 900;
-      font-size: 10px;
+      font-size: 9px;
     }
-    .navItem .material-icons{ font-size: 24px; }
+    .navItem .material-icons{ font-size: 22px; }
 
     .navCenter{
       position: relative;
@@ -746,26 +788,26 @@
     .navCenter a{
       width: 64px; height: 64px;
       border-radius: 999px;
-      background: var(--accent);
+      background: var(--line-color);
       color:#fff;
       display:flex;
       align-items:center;
       justify-content:center;
       border: 4px solid #fff;
-      box-shadow: 0 18px 40px rgba(233,79,55,.30);
+      box-shadow: 0 18px 40px rgba(6,199,85,.30);
       transition: transform .12s ease;
     }
     .navCenter a:active{ transform: scale(.92); }
     .navCenter .ping{
       position:absolute;
       top: -4px; right: -2px;
-      width: 22px; height: 22px;
+      width: 28px; height: 28px;
       border-radius: 999px;
       background: #facc15;
       color: var(--primary);
       border: 2px solid #fff;
       font-weight: 900;
-      font-size: 11px;
+      font-size: 10px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -773,7 +815,7 @@
     }
     @keyframes pulse{
       0%{ transform: scale(1); box-shadow: 0 0 0 0 rgba(250,204,21,.45); }
-      70%{ transform: scale(1.02); box-shadow: 0 0 0 10px rgba(250,204,21,0); }
+      70%{ transform: scale(1.05); box-shadow: 0 0 0 12px rgba(250,204,21,0); }
       100%{ transform: scale(1); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
     }
 
@@ -785,6 +827,9 @@
       .hero__content{ min-height: 560px; padding: 34px; }
       .offer{ grid-template-columns: 1fr 1fr; gap: 16px; }
       .iconRow{ gap: 16px; }
+      .contactDual{ grid-template-columns: 1fr 1fr; }
+      .hero__ctaRow{ grid-template-columns: 260px 260px; justify-content: start; }
+      .btnWide{ width: auto; min-width: 300px; display: inline-flex; margin-right: 12px; }
     }
 
     /* Small screens */
@@ -816,11 +861,17 @@
         <strong>トリイミュージック</strong>
       </div>
 
-      <!-- Primary conversion CTA -->
-      <a class="cta-header" href="tel:0740222063" data-tel-cta="header">
-        <span class="material-icons" aria-hidden="true">phone_in_talk</span>
-        まずは電話で相談
-      </a>
+      <!-- Primary conversion CTAs -->
+      <div class="header__ctas">
+          <a class="cta-header cta-header--line" href="https://lin.ee/Z4MdXtc" target="_blank" data-cta="header_line">
+            <span class="material-icons" aria-hidden="true">chat</span>
+            相談
+          </a>
+          <a class="cta-header cta-header--tel" href="tel:0740222063" data-cta="header_tel">
+            <span class="material-icons" aria-hidden="true">phone_in_talk</span>
+            申込
+          </a>
+      </div>
     </div>
   </header>
 
@@ -842,21 +893,21 @@
         </h1>
 
         <div class="hero__lead">
-          <div class="kicker">PHONE FIRST</div>
+          <div class="kicker">30分無料体験レッスン受付中</div>
           <p>・楽譜が読めなくても大丈夫</p>
           <p>・楽器に触るのが久しぶりでも大丈夫</p>
           <p>・年齢を気にせず始められます</p>
-          <p style="margin-top:10px;font-weight:800;">まずはお電話で「自分に合うかどうか」だけ聞いてみてください。</p>
+          <p style="margin-top:10px;font-weight:800;">「自分に合うか不安」なら、まずはLINEでそっと聞いてみてください。</p>
         </div>
 
         <div class="offer" aria-label="Offers">
           <div class="offer__card">
             <p class="offer__title">EXPERIENCE BONUS</p>
             <p class="offer__main">
-              体験教室当日にご入会で<br/>
-              <strong>入会金 5,500円 → 50%OFF</strong>
+              <strong>無料体験レッスン（30分）</strong><br/>
+              当日入会で入会金 50%OFF
             </p>
-            <p class="offer__note">※「まだ迷っている段階」のお電話でも大丈夫です。まずは質問だけでもOK。</p>
+            <p class="offer__note">※お一人様1回限り無料で受講いただけます。まずは教室の雰囲気を見てみたい方へ。</p>
           </div>
 
           <div class="offer__card">
@@ -865,25 +916,28 @@
               おためし3回レッスン<br/>
               <strong>3,300円(税込)</strong>
             </p>
-            <p class="offer__note">教材費無料／手ぶらOK。まずは“続けられそうか”を3回で確かめられます。</p>
+            <p class="offer__note">※他の体験レッスンとの併用はできません。3回で“続けられそうか”を確かめられます。</p>
           </div>
         </div>
 
         <div class="hero__ctaRow" aria-label="Hero CTAs">
-          <a class="btn btn--tel" href="tel:0740222063" data-tel-cta="hero_primary">
-            <span class="material-icons" aria-hidden="true">call</span>
-            今すぐ電話で相談する
+          <a class="btn btn--line" href="https://lin.ee/Z4MdXtc" target="_blank" data-cta="hero_line">
+            <span class="btnText">LINEで気軽に相談する</span>
+            <span class="btnSub">追加後スタンプを送ってください</span>
+          </a>
+          <a class="btn btn--tel" href="tel:0740222063" data-cta="hero_tel">
+            <span class="btnText">電話で体験に申し込む</span>
+            <span class="btnSub">10:30〜19:30（月曜定休）</span>
           </a>
           <a class="btn btn--ghost" href="#contact">
             <span class="material-icons" aria-hidden="true">arrow_downward</span>
-            相談の流れを見る
+            お問い合わせ方法の詳細を見る
           </a>
         </div>
 
         <div class="trustline" aria-label="Trust line">
-          <span class="pill"><span class="material-icons" aria-hidden="true">verified</span>電話＝申込みではありません</span>
-          <span class="pill"><span class="material-icons" aria-hidden="true">favorite</span>無理な勧誘は一切なし</span>
-          <span class="pill"><span class="material-icons" aria-hidden="true">schedule</span>10:30〜19:30（月曜定休）</span>
+          <span class="pill"><span class="material-icons" aria-hidden="true">verified</span>相談＝申込みではありません</span>
+          <span class="pill"><span class="material-icons" aria-hidden="true">favorite</span>LINE相談は24時間受付中</span>
         </div>
       </div>
     </section>
@@ -921,7 +975,7 @@
         </div>
 
         <p class="recommend__desc">
-          「いきなり入会は不安…」という方へ。まずは3回だけ。<br/>
+          「1回30分の無料体験だけでは不安…」という方へ。まずは3回だけ。<br/>
           続けられそうか、教室の雰囲気が合うかを確認してから決められます。
         </p>
 
@@ -934,10 +988,16 @@
           <div class="check"><span class="material-icons" aria-hidden="true">check_circle</span>教材費無料</div>
           <div class="check"><span class="material-icons" aria-hidden="true">check_circle</span>手ぶらでOK</div>
         </div>
+        
+        <p style="font-size:12px; margin-bottom:15px; opacity:0.9;">※他の体験レッスン（30分無料体験含む）との併用はできません。</p>
 
-        <a class="btnWide btnWide--white" href="tel:0740222063" data-tel-cta="trial_block">
-          まずは電話で相談する
-          <span class="material-icons" aria-hidden="true">arrow_forward</span>
+        <a class="btnWide btnWide--white" href="tel:0740222063" data-cta="trial_tel">
+          <span class="material-icons" aria-hidden="true">phone_in_talk</span>
+          電話で体験に申し込む
+        </a>
+        <a class="btnWide btnWide--line" href="https://lin.ee/Z4MdXtc" target="_blank" data-cta="trial_line">
+          <span class="material-icons" aria-hidden="true">chat</span>
+          LINEで相談・申し込む
         </a>
       </div>
     </section>
@@ -972,12 +1032,12 @@
     </section>
 
     <!-- Phone help / What to ask -->
-    <section class="phoneHelp" aria-label="Phone help">
+    <section class="phoneHelp" aria-label="Consultation help">
       <div class="phoneHelp__top">
-        <h3 class="phoneHelp__title">お電話では、こんなご質問が多いです</h3>
+        <h3 class="phoneHelp__title">よくあるご質問・ご相談</h3>
         <p class="phoneHelp__desc">
-          📞 <b>電話＝申込みではありません</b>。ほとんどの方が、まずは「相談」から始めています。<br/>
-          「何を聞けばいい？」が分からなくても大丈夫。下の例から1つ聞くだけでもOKです。
+          「何を聞けばいい？」が分からなくても大丈夫。下の例をそのままLINEで送っていただいてもOKです。<br/>
+          <b>LINEなら24時間、いつでもあなたのタイミングで</b>送っていただけます。
         </p>
       </div>
 
@@ -998,24 +1058,24 @@
           <div class="q">Q</div>
           <p>続けられるか不安です。まずは体験だけでも大丈夫ですか？</p>
         </div>
-        <div class="item" role="listitem">
-          <div class="q">Q</div>
-          <p>仕事や家事と両立できる時間帯はありますか？</p>
-        </div>
       </div>
 
       <div class="assurance">
         <div class="left">
           <div class="k">
             <span class="material-icons" aria-hidden="true">verified</span>
-            無理に体験や入会をすすめることはありません
+            相談＝申込みではありません
           </div>
-          <div class="s">「自分に合いそうかどうか」だけ確認して、ゆっくり決めてください。</div>
+          <div class="s">無理に体験をすすめることはありません。自分に合いそうか確認して、ゆっくり決めてください。</div>
         </div>
-        <a class="btn btn--tel" href="tel:0740222063" data-tel-cta="phonehelp">
-          <span class="material-icons" aria-hidden="true">call</span>
-          相談だけ電話する
-        </a>
+        <div class="assurance__btns">
+            <a class="btn btn--line" href="https://lin.ee/Z4MdXtc" target="_blank" data-cta="qa_line">
+                <span class="btnText">LINEで相談する</span>
+            </a>
+            <a class="btn btn--tel" href="tel:0740222063" data-cta="qa_tel">
+                <span class="btnText">電話で相談する</span>
+            </a>
+        </div>
       </div>
     </section>
 
@@ -1026,20 +1086,34 @@
         <h2>お問い合わせ・ご相談</h2>
       </div>
 
-      <div class="phoneCard" aria-label="Phone">
-        <div class="pre">
-          <span class="material-icons" aria-hidden="true">support_agent</span>
-          申込みではありません。まずはご相談ください
+      <div class="contactDual">
+        <!-- LINE Card -->
+        <div class="c-card c-card--line">
+            <div class="type-label">気軽に・まずは相談したい方</div>
+            <h3>公式LINEで相談</h3>
+            <p class="desc">「どんな先生？」「自分にもできる？」など、小さな不安を解消できます。24時間受付中。</p>
+            
+            <a class="c-btn c-btn--line" href="https://lin.ee/Z4MdXtc" target="_blank" data-cta="contact_line">
+                <span class="material-icons">chat</span>
+                LINEで友だち追加
+            </a>
+            <div class="stamp-notice">
+                ※登録後、必ずスタンプを1つ送信してください。<br>スタンプを頂かないと返信ができません。
+            </div>
         </div>
 
-        <div class="number" id="telNumber">0740-22-2063</div>
-
-        <div class="meta">受付時間 10:30〜19:30（月曜定休）</div>
-
-        <a class="tap" href="tel:0740222063" data-tel-cta="contact_primary">
-          <span class="material-icons" aria-hidden="true">phone_in_talk</span>
-          タップして電話する
-        </a>
+        <!-- Phone Card -->
+        <div class="c-card c-card--tel">
+            <div class="type-label">お急ぎ・体験を予約したい方</div>
+            <h3>お電話で問い合わせ</h3>
+            <p class="desc">30分無料体験の日時をその場で決定できます。スタッフと直接話して決めたい方へ。</p>
+            <div class="main-val">0740-22-2063</div>
+            <a class="c-btn c-btn--tel" href="tel:0740222063" data-cta="contact_tel">
+                <span class="material-icons">phone_in_talk</span>
+                タップして電話する
+            </a>
+            <div style="font-size:11px; color:var(--muted); margin-top:10px;">受付時間 10:30〜19:30（月曜定休）</div>
+        </div>
       </div>
 
       <div class="contactGrid">
@@ -1047,7 +1121,7 @@
           <div class="qr">
             <img src="images/QR_296022.png" alt="QR Code">
           </div>
-          <b>WEBから申し込む（別導線）</b>
+          <b>WEBから申し込む</b>
         </a>
 
         <a class="miniCard" href="https://www.toriimusic.co.jp/" target="_blank" rel="noopener noreferrer">
@@ -1071,24 +1145,24 @@
         ホーム
       </a>
 
-      <a class="navItem" href="#contact">
-        <span class="material-icons" aria-hidden="true">help</span>
-        相談例
+      <a class="navItem" href="tel:0740222063" data-cta="bottom_tel">
+        <span class="material-icons" aria-hidden="true">call</span>
+        電話申込
       </a>
 
       <div class="navCenter">
-        <a href="tel:0740222063" aria-label="電話で相談する" data-tel-cta="bottom_center">
-          <span class="material-icons" aria-hidden="true">call</span>
+        <a href="https://lin.ee/Z4MdXtc" target="_blank" aria-label="LINEで相談する" data-cta="bottom_line">
+          <span class="material-icons" aria-hidden="true">chat</span>
         </a>
-        <div class="ping" aria-hidden="true">!</div>
+        <div class="ping" aria-hidden="true">相談</div>
       </div>
 
-      <a class="navItem" href="https://www.toriimusic.co.jp/children/pianochildren/#6">
+      <a class="navItem" href="https://www.toriimusic.co.jp/children/pianochildren/#6" target="_blank">
         <span class="material-icons" aria-hidden="true">place</span>
-        アクセス
+        地図
       </a>
 
-      <a class="navItem" href="https://www.toriimusic.co.jp/toiawaseschool/">
+      <a class="navItem" href="https://www.toriimusic.co.jp/toiawaseschool/" target="_blank">
         <span class="material-icons" aria-hidden="true">mail</span>
         問合せ
       </a>
@@ -1109,30 +1183,22 @@
       history.replaceState(null, '', href);
     });
 
-    // Optional: simple click tracking (no external deps)
-    // - Stores counts in localStorage so you can confirm taps in testing.
-    // - If you later add GA4/GTM, you can replace this with dataLayer pushes.
+    // Tracking helper
     (function(){
-      const KEY = 'torii_tel_click_counts';
-      function read(){
-        try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(_){ return {}; }
-      }
-      function write(obj){
-        try{ localStorage.setItem(KEY, JSON.stringify(obj)); }catch(_){}
-      }
+      const KEY = 'torii_cta_counts';
+      function read(){ try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(_){ return {}; } }
+      function write(obj){ try{ localStorage.setItem(KEY, JSON.stringify(obj)); }catch(_){} }
       function inc(source){
         const obj = read();
         obj[source] = (obj[source] || 0) + 1;
         write(obj);
       }
       document.addEventListener('click', function(e){
-        const tel = e.target.closest('a[href^="tel:"]');
-        if(!tel) return;
-        const src = tel.getAttribute('data-tel-cta') || 'unknown';
-        inc(src);
+        const cta = e.target.closest('a[data-cta]');
+        if(!cta) return;
+        inc(cta.getAttribute('data-cta'));
       });
-      // Debug helper: open console and run window.__telClicks()
-      window.__telClicks = function(){ return read(); };
+      window.__ctaClicks = function(){ return read(); };
     })();
   </script>
 </body>
