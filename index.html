@@ -140,7 +140,8 @@
     .hero__content{
       position: relative;
       z-index: 2;
-      padding: 22px;
+      /* ▼ 修正点: スマホ表示で上部に余白を追加 */
+      padding: 70px 22px 22px;
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
@@ -649,7 +650,7 @@
     }
     .c-card--line{ border-top: 5px solid var(--line-color); }
     .c-card--tel{ border-top: 5px solid var(--primary); }
-    
+
     .c-card .type-label{
       font-size: 10px;
       font-weight: 900;
@@ -824,7 +825,11 @@
       .wrap{ padding-bottom: 40px; }
       .bottomNav{ display:none; }
       .hero{ min-height: 560px; }
-      .hero__content{ min-height: 560px; padding: 34px; }
+      .hero__content{
+        min-height: 560px;
+        /* ▼ 修正点: PC表示では元の余白に戻す */
+        padding: 34px;
+      }
       .offer{ grid-template-columns: 1fr 1fr; gap: 16px; }
       .iconRow{ gap: 16px; }
       .contactDual{ grid-template-columns: 1fr 1fr; }
@@ -954,7 +959,7 @@
     <b>ヴァイオリン</b>
   </a>
 
-  <a class="iconCard" href="https://www.toriimusic.co.jp/adult/vocal/?_gl=1%2A1w0j43n%2A_gcl_au%2AMTAyNzI1MjAyMS4xNzYxNTI3MzQ5" target="_blank" rel="noopener noreferrer" aria-label="ヴォーカル・ヴォイトレ（詳細ページへ）">
+  <a class="iconCard" href="https://www.toriimusic.co.jp/adult/vocal/?_gl=1%2A1w0j43n%2A_gcl_au%2AMTAyNzI1MjAyMS4xNzYxNTI3MzQО" target="_blank" rel="noopener noreferrer" aria-label="ヴォーカル・ヴォイトレ（詳細ページへ）">
     <span class="material-icons" aria-hidden="true">mic</span>
     <b>ヴォーカル／ヴォイトレ</b>
   </a>
@@ -988,12 +993,12 @@
           <div class="check"><span class="material-icons" aria-hidden="true">check_circle</span>教材費無料</div>
           <div class="check"><span class="material-icons" aria-hidden="true">check_circle</span>手ぶらでOK</div>
         </div>
-        
+
         <p style="font-size:12px; margin-bottom:15px; opacity:0.9;">※他の体験レッスン（30分無料体験含む）との併用はできません。</p>
 
         <a class="btnWide btnWide--white" href="tel:0740222063" data-cta="trial_tel">
           <span class="material-icons" aria-hidden="true">phone_in_talk</span>
-          電話で体験に申し込む
+          電話で申し込む
         </a>
         <a class="btnWide btnWide--line" href="https://lin.ee/Z4MdXtc" target="_blank" data-cta="trial_line">
           <span class="material-icons" aria-hidden="true">chat</span>
